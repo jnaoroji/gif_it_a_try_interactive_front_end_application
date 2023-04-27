@@ -1,5 +1,5 @@
 var GiphyApiKey: 'Tx6284aZTIMxVEBFzICg2PUFWP8R9FCu';
-var MusicBrainzUrl:"https://musicbrainz.org/ws/2/";
+var MusicBrainzUrl:'https://musicbrainz.org/ws/2/';
 //  lookup:   /<ENTITY_TYPE>/<MBID>?inc=<INC>&fmt=json
 //  our look up: /<=ARTIST>/<MBID>?inc=<WORKS>&fmt=json
 //  browse:   /<RESULT_ENTITY_TYPE>?<BROWSING_ENTITY_TYPE>=<MBID>&limit=<LIMIT>&offset=<OFFSET>&inc=<INC>
