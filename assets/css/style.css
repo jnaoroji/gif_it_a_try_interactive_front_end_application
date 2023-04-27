@@ -1,0 +1,137 @@
+* {
+    margin:0;
+    Padding:0;
+  
+  }
+  /*comments*/
+  body{
+      
+      background: linear-gradient(315deg, #4c00ff, #ff0058);
+      background-size: cover;
+      font-family:'Courier New', Courier, monospace;
+  
+  
+  }
+  .heading h1{
+  padding: 10px;
+  color:rgb(28, 245, 172);
+  text-align: center;
+  font-size: 80px;
+  padding-top: 40px;
+  }
+  .picbox{ 
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      padding: 10px ;
+      margin:20px;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+     
+          
+          }
+  .picbox .box1{ 
+      position: relative;
+      height: 300px;
+      width: 250px;
+      background:whitesmoke;
+      box-shadow: -3px -3px 7px #f6a4c1, 
+      3px 3px 5px rgba(94, 104, 121, .288) ;
+      border-radius: 10px;   
+          
+  }
+  .picbox .box1 img{
+  padding: 5px;
+   height:290px;
+   width:240px;
+   border-radius: 10px;
+  
+  }
+  
+  .about{  
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      padding: 10px ;
+      margin:20px;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+     
+  
+  }
+  .about .box0{ 
+      position: relative;
+      height: 300px;
+      width: 250px;
+      background:whitesmoke;
+      box-shadow: -3px -3px 7px #f6a4c1, 
+      3px 3px 5px rgba(94, 104, 121, .288) ;
+      border-radius: 10px;    
+  
+  }
+  
+  .about .box0 p{
+  padding: 10px;
+  }
+  
+  
+  
+  .about .box0 a{
+  text-decoration: none;
+  color: #5705fa;     
+  } 
+  .about .box0 img{
+      height:50px;
+      padding-top: 20px;
+  
+  }
+  .menubox {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      padding: 10px ;
+      margin:20px;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+     
+  }
+  .menubox .box2{
+      position: relative;
+      height: 300px;
+      width: 250px;
+      background:whitesmoke;
+      box-shadow: -3px -3px 7px #f6a4c1, 
+      3px 3px 5px rgba(94, 104, 121, .288) ;
+      border-radius: 10px; 
+  
+  }
+  
+  .menubox .box2 button{
+  padding: 10px;
+  margin: 20px;
+  color: black;
+  border: none;
+  border-radius: 7px;
+  
+  box-shadow: -3px -3px 7px rgba(94, 104, 121, .288), 
+  3px 3px 5px white ;
+  border-radius: 10px; 
+  }
+  
+    /* Mobile devices */
+    @media only screen and (max-width: 767px) {
+    
+    }
+    
+    /* Tablets */
+    @media only screen and (min-width: 768px) and (max-width: 1023px) {
+    
+    }
+    
+    /* Desktops and laptops */
+    @media only screen and (min-width: 1024px) {
+    
+    }
