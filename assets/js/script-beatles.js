@@ -12,14 +12,15 @@
 
 //the button id that executes the game
 
-var adeleButtonEl = document.querySelector('#adelebtn');
+var beatlesButtonEl = document.querySelector('#beatlesbtn');
 var gameArea = document.querySelector('#menu');
+var titles = [];
 //function that triggers getting the artist works from Music Brains API
 
-var playAdeleGame = function (event){
+var playBeatlesGame = function (event){
     event.preventDefault();
 
-    var artist = adeleButtonEl.getAttribute('id');
+    var artist = beatlesButtonEl.getAttribute('id');
 
     if (artist){
         getArtistWorks(artist);
@@ -31,15 +32,15 @@ var playAdeleGame = function (event){
 }
 
 var getArtistWorks = function (){
-    var adeleApiUrl = "https://musicbrainz.org/ws/2/artist/cc2c9c3c-b7bc-4b8b-84d8-4fbd8779e493?inc=works&fmt=json";
+    var beatlesApiUrl = "https://musicbrainz.org/ws/2/artist/b10bbbfc-cf9e-42e0-be17-e2c3e1d2600d?inc=works&fmt=json";
     
-    fetch(adeleApiUrl)
+    fetch(beatlesApiUrl)
         .then(function (response) {
         if (response.ok) {
             response.json().then(function (works) {
             console.log(works);
             
-            displayAdeleGame(works);
+            displayBeatlesGame(works);
             
             });
             } else {
@@ -53,11 +54,11 @@ var getArtistWorks = function (){
             });
 };
 
-var displayAdeleGame = function (data) {
+var displayBeatlesGame = function (data) {
     var works = data.works;
 
     if (!works || works.length === 0) {
-        showError('No works found for this artist');
+        alert('No works found for this artist');
         return;
     }
 
@@ -65,7 +66,7 @@ var displayAdeleGame = function (data) {
     
     gameArea.innerHTML = '';
 
-    var titles = [];
+ 
 
     // Display the titles of the artist's works
     works.forEach(function (work) {
@@ -82,14 +83,15 @@ var displayAdeleGame = function (data) {
 }
 
 var createGiphyRequest = function (){
+    //turn this var into a function
+    var searchTerm = titles[Math.floor(Math.random() * titles.length)];
+    console.log("answer= " + searchTerm);
     // var giphyUrl = "https://api.giphy.com/v1/gifs/translate?api_key=Tx6284aZTIMxVEBFzICg2PUFWP8R9FCu" + "&s=" + searchTerm + "&limit=1";
-    var searchTerm = "day dreamer";
+    // var searchTerm = "Aint She Sweet";
     var giphyUrl = "https://api.giphy.com/v1/gifs/translate?api_key=Tx6284aZTIMxVEBFzICg2PUFWP8R9FCu&s=" + searchTerm;
     
-    //turn this var into a function
-    // var searchTerm = function(){
-
-    // }
+   
+  
     fetch(giphyUrl)
     .then(function (response) {
     if (response.ok) {
@@ -125,4 +127,4 @@ var displayGif = function (data){
  
 }
 
-adeleButtonEl.addEventListener('click', playAdeleGame);
+beatlesButtonEl.addEventListener('click', playBeatlesGame);
