@@ -8,12 +8,12 @@
 // Adele MBID = cc2c9c3c-b7bc-4b8b-84d8-4fbd8779e493
 // Snoop Dog MBID = f90e8b26-9e52-4669-a5c9-e28529c47894
 // Eminem MBID = b95ce3ff-3d05-4e87-9e01-c97b66af13d4
-
+//"https://api.giphy.com/v1/stickers/translate?api_key=" + apiKey + "&s=" + searchTerm;
 
 //the button id that executes the game
 
 var adeleButtonEl = document.querySelector('#adelebtn');
-
+var gameArea = document.querySelector('#menu');
 //function that triggers getting the artist works from Music Brains API
 
 var playAdeleGame = function (event){
@@ -62,7 +62,7 @@ var displayAdeleGame = function (data) {
     }
 
     // Clear the game area
-    var gameArea = document.querySelector('#menu');
+    
     gameArea.innerHTML = '';
 
     var titles = [];
@@ -71,14 +71,58 @@ var displayAdeleGame = function (data) {
     works.forEach(function (work) {
         var title = work.title;
         titles.push(title);
+
     });
     console.log(titles);
+
+    var RandomButton = document.createElement("button");
+        RandomButton.textContent = "Get Giphy!";
+        gameArea.appendChild(RandomButton);
+        RandomButton.addEventListener('click', createGiphyRequest);
 }
 
+var createGiphyRequest = function (){
+    // var giphyUrl = "https://api.giphy.com/v1/gifs/translate?api_key=Tx6284aZTIMxVEBFzICg2PUFWP8R9FCu" + "&s=" + searchTerm + "&limit=1";
+    var searchTerm = "day dreamer";
+    var giphyUrl = "https://api.giphy.com/v1/gifs/translate?api_key=Tx6284aZTIMxVEBFzICg2PUFWP8R9FCu&s=" + searchTerm;
+    
+    //turn this var into a function
+    // var searchTerm = function(){
 
+    // }
+    fetch(giphyUrl)
+    .then(function (response) {
+    if (response.ok) {
+        response.json().then(function (gif) {
+        console.log(gif);
+        displayGif(gif);
+        
+        });
+        } else {
+        alert('Error: ' + response.statusText);
+        //cant use alerts
+        }
+        })
+        .catch(function () {
+        alert('Unable to connect to Music Brainz');
+        // cant use alerts
+        });
+};
 
+var displayGif = function (data){
+    var gif = data.data.images.original.mp4;
+    console.log(gif);
 
+     // Clear the game area
+     gameArea.innerHTML = '';
 
+    var gifEl = document.createElement('video');
+    gifEl.src = gif;
+    gifEl.autoplay = true;
+    gifEl.loop = true;
 
+    gameArea.appendChild(gifEl);    
+ 
+}
 
 adeleButtonEl.addEventListener('click', playAdeleGame);

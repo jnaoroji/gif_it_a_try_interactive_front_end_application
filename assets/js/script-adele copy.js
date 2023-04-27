@@ -12,15 +12,15 @@
 
 //the button id that executes the game
 
-var beatlesButtonEl = document.querySelector('#beatlesbtn');
+var adeleButtonEl = document.querySelector('#adelebtn');
 var gameArea = document.querySelector('#menu');
 var titles = [];
 //function that triggers getting the artist works from Music Brains API
 
-var playBeatlesGame = function (event){
+var playAdeleGame = function (event){
     event.preventDefault();
 
-    var artist = beatlesButtonEl.getAttribute('id');
+    var artist = adeleButtonEl.getAttribute('id');
 
     if (artist){
         getArtistWorks(artist);
@@ -32,15 +32,15 @@ var playBeatlesGame = function (event){
 }
 
 var getArtistWorks = function (){
-    var beatlesApiUrl = "https://musicbrainz.org/ws/2/artist/b10bbbfc-cf9e-42e0-be17-e2c3e1d2600d?inc=works&fmt=json";
+    var adeleApiUrl = "https://musicbrainz.org/ws/2/artist/b10bbbfc-cf9e-42e0-be17-e2c3e1d2600d?inc=works&fmt=json";
     
-    fetch(beatlesApiUrl)
+    fetch(adeleApiUrl)
         .then(function (response) {
         if (response.ok) {
             response.json().then(function (works) {
             console.log(works);
             
-            displayBeatlesGame(works);
+            displayadeleGame(works);
             
             });
             } else {
@@ -54,7 +54,7 @@ var getArtistWorks = function (){
             });
 };
 
-var displayBeatlesGame = function (data) {
+var displayAdeleGame = function (data) {
     var works = data.works;
 
     if (!works || works.length === 0) {
@@ -127,4 +127,4 @@ var displayGif = function (data){
  
 }
 
-beatlesButtonEl.addEventListener('click', playBeatlesGame);
+adeleButtonEl.addEventListener('click', playAdeleGame);
