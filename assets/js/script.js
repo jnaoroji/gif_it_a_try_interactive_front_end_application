@@ -16,6 +16,8 @@ var beatlesButtonEl = document.querySelector('#beatlesbtn');
 var adeleButtonEl = document.querySelector('#adelebtn');
 var queenButtonEl = document.querySelector('#queenbtn');
 var michaelButtonEl = document.querySelector('#michaelbtn');
+var modal = document.getElementById("my-modal");
+var alertContentEL = document.getElementById("alert-content");
 
 const artistApiUrls = {
     "michaelbtn": "https://musicbrainz.org/ws/2/artist/2f9ecbed-27be-40e6-abca-6de49d50299e?inc=works&fmt=json",
@@ -38,7 +40,9 @@ var playGame = function (event){
         getArtistWorks(artist);
         
     } else{
-        alert('please select a new artist')
+        alertContentEL.textContent = 'please select a new artist'
+        alert();
+        //alert('please select a new artist');
         //cant use alerts, find a modal for this prompt
     }
 }
@@ -47,7 +51,10 @@ var getArtistWorks = function (artist){
 
     var artistApiUrl = artistApiUrls[artist];
     if (!artistApiUrl) {
-        alert('Invalid artist name');
+        alertContentEL.textContent = 'Invalid artist name!'
+        alert();
+        //alert('Invalid artist name!');
+        //cant use alerts, find a modal for this prompt
         return;
     }
     
@@ -61,12 +68,16 @@ var getArtistWorks = function (artist){
             
             });
             } else {
-            alert('Error: ' + response.statusText);
+            alertContentEL.textContent = 'Error: ' + response.statusText
+            alert();
+            //alert('Error: ' + response.statusText)
             //cant use alerts
             }
             })
             .catch(function () {
-            alert('Unable to connect to Music Brainz');
+            alertContentEL.textContent = 'Unable to connect to Music Brainz'
+            alert();
+            //alert('Unable to connect to Music Brainz');
             // cant use alerts
             });
 };
@@ -75,7 +86,10 @@ var displayGame = function (data) {
     var works = data.works;
 
     if (!works || works.length === 0) {
-        alert('No works found for this artist');
+        alertContentEL.textContent = 'No works found for this artist'
+        alert();
+        //alert('No works found for this artist');
+        // cant use alerts
         return;
     }
 
@@ -115,12 +129,16 @@ var displayGame = function (data) {
         
         });
         } else {
-        alert('Error: ' + response.statusText);
+        alertContentEL.textContent = 'Error: ' + response.statusText
+        alert();
+        //alert('Error: ' + response.statusText);
         //cant use alerts
         }
         })
         .catch(function () {
-        alert('Unable to connect to Music Brainz');
+        alertContentEL.textContent = 'Unable to connect to Music Brainz'
+        alert();
+        //alert('Unable to connect to Music Brainz');
         // cant use alerts
         });
 };
@@ -145,3 +163,26 @@ var displayGif = function (data){
 artistButtonsEl.forEach(function(button) {
     button.addEventListener('click', playGame);
   });
+
+
+
+
+  //var tailwind alert modal = document.getElementById("my-modal");
+var alert = function (){
+    var btn = document.getElementById("open-btn");
+    var button = document.getElementById("ok-btn");
+
+    modal.style.display = "block";
+
+      // close modal when the OK button
+    button.onclick = function() {
+        modal.style.display = "none";
+    }
+
+// close modal when clicks anywhere outside the modal
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+}

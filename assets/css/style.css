@@ -33,7 +33,7 @@
           }
   .picbox .box1{ 
       position: relative;
-      height: 300px;
+      height: 350px;
       width: 250px;
       background:whitesmoke;
       box-shadow: -3px -3px 7px #f6a4c1, 
@@ -63,7 +63,7 @@
   }
   .about .box0{ 
       position: relative;
-      height: 300px;
+      height: 350px;
       width: 250px;
       background:whitesmoke;
       box-shadow: -3px -3px 7px #f6a4c1, 
@@ -100,7 +100,7 @@
   }
   .menubox .box2{
       position: relative;
-      height: 300px;
+      height: 350px;
       width: 250px;
       background:whitesmoke;
       box-shadow: -3px -3px 7px #f6a4c1, 
