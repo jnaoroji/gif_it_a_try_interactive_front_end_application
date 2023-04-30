@@ -18,6 +18,8 @@ var queenButtonEl = document.querySelector('#queenbtn');
 var michaelButtonEl = document.querySelector('#michaelbtn');
 var modal = document.getElementById("my-modal");
 var alertContentEL = document.getElementById("alert-content");
+var scoreBtn = document.getElementById("score")
+var scoreModalEl = document.getElementById("score-modal")
 
 const artistApiUrls = {
     "michaelbtn": "https://musicbrainz.org/ws/2/artist/2f9ecbed-27be-40e6-abca-6de49d50299e?inc=works&fmt=json",
@@ -34,6 +36,10 @@ var playGame = function (event){
     event.preventDefault();
     
     var artist = event.target.getAttribute('id');
+    // pick artist name stored in local storage
+    var pickedArtist = event.target.textContent
+    localStorage.setItem("artistName", pickedArtist)
+    
     console.log(artist);
 
     if (artist){
@@ -108,9 +114,14 @@ var displayGame = function (data) {
     console.log(titles);
 
     var RandomButton = document.createElement("button");
-        RandomButton.textContent = "Get Giphy!";
-        gameArea.appendChild(RandomButton);
-        RandomButton.addEventListener('click', createGiphyRequest);
+
+    // get picked artist name from local storage and click to start
+    var artistName = localStorage.getItem("artistName")
+    RandomButton.innerHTML = artistName + '<br>' + 'Click to Start!';
+    RandomButton.classList.add('box2','hover:font-bold');
+
+    gameArea.appendChild(RandomButton);
+    RandomButton.addEventListener('click', createGiphyRequest);
 }
 
     var createGiphyRequest = function (){
@@ -145,6 +156,9 @@ var displayGame = function (data) {
 
 var displayGif = function (data){
     var gif = data.data.images.original.mp4;
+
+    // can we get a fix height for each gif?
+    //var gif = data.data.images.fixed_height.mp4;
     console.log(gif);
 
      // Clear the game area
@@ -169,7 +183,6 @@ artistButtonsEl.forEach(function(button) {
 
   //var tailwind alert modal = document.getElementById("my-modal");
 var alert = function (){
-    var btn = document.getElementById("open-btn");
     var button = document.getElementById("ok-btn");
 
     modal.style.display = "block";
@@ -183,6 +196,29 @@ var alert = function (){
     window.onclick = function(event) {
         if (event.target == modal) {
             modal.style.display = "none";
+        }
+    }
+}
+
+// score modal
+scoreBtn.addEventListener("click", function(){
+    score();
+})
+
+var score = function (){
+    var button = document.getElementById("close-btn");
+
+    scoreModalEl.style.display = "block";
+
+      // close modal when the OK button
+    button.onclick = function() {
+        scoreModalEl.style.display = "none";
+    }
+
+// close modal when clicks anywhere outside the modal
+    window.onclick = function(event) {
+        if (event.target == scoreModalEl) {
+            scoreModalEl.style.display = "none";
         }
     }
 }

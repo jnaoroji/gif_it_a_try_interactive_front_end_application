@@ -63,6 +63,7 @@
   }
   .about .box0{ 
       position: relative;
+      /*font-weight: bolder;*/
       height: 350px;
       width: 250px;
       background:whitesmoke;
@@ -112,7 +113,7 @@
   .menubox .box2 button{
   padding: 10px;
   margin: 20px;
-  color: black;
+  color: rgb(0, 0, 0);
   border: none;
   border-radius: 7px;
   
