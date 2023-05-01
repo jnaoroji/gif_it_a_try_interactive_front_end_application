@@ -57,29 +57,24 @@
 </div>
 
 
-<!--Modal Effect-->
-<div class="fixed hidden inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full" id="score-modal">
-
-	<!--modal-->
+<div class="fixed hidden inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full" id="InitialSubmit-modal">
 	<div class="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
 		<div class="mt-3 text-center">
-      <div>
-        <h3 class="text-xl leading-6 font-medium py-2 text-black">Compete with friends!</h3>
-        <ul id="score-area" class="py-2">
-          <li>example GS: 25</li>
-        </ul>
-        <div class="items-center px-4 py-3">
-          <button
-            id="close-btn"
-            class="px-4 py-1 bg-violet-500 text-white text-base font-medium rounded-md w-1/2 shadow-sm hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-purple-300"
-          >
-            Close
-          </button>
-			  </div>
-      </div>
+		  <h3 id="userScore" class="text-lg leading-6 py-10 font-medium text-gray-900"></h3>
+			<label for="initial" class="block text-base font-medium leading-6 text-gray-900">Enter Your Initial</label>  
+				<input type="text" name="initial" id="initial" class="block w-60 rounded-md border-0 py-1.5 mx-auto pl-20 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600" placeholder="Initial">
+				<div class="items-center py-3">
+					<button
+					id="initialSubmit-btn"
+					class="px-4 py-1 bg-violet-500 text-white text-base font-medium rounded-md w-1/2 shadow-sm hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-purple-300"
+					>
+					Submit
+					</button>
+				</div>
 		</div>
 	</div>
 </div>
+
 
 <footer class="footer"> Made with ❤️ by Jenny, Fergus, Rachael & Su.</footer>
 
