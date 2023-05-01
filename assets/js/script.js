@@ -9,6 +9,7 @@ var modal = document.getElementById("my-modal");
 var alertContentEL = document.getElementById("alert-content");
 var scoreBtn = document.getElementById("score")
 var scoreModalEl = document.getElementById("score-modal")
+var homePageRefresh = document.getElementById('homepagerefresh')
 
 //object of artist urls on music brainz
 const artistApiUrls = {
@@ -176,6 +177,7 @@ var displayGif = function (data){
 
     // creates next button
     var nextEl = document.createElement('button');
+    nextEl.setAttribute('style', 'margin-top: 50%')
     nextEl.textContent = "Next Song!";
     nextEl.addEventListener('click', createGiphyRequest);
     
@@ -207,6 +209,7 @@ var displayGif = function (data){
     setTimeout(function() {
         var answerEl = document.createElement("p");
         answerEl.textContent = "Answer: " + searchTerm;
+        answerEl.setAttribute('style', 'padding: 10px')
         
         gameArea.appendChild(answerEl);
         // remove the answerEl after 3 seconds
