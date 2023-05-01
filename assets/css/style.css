@@ -18,6 +18,16 @@
   font-size: 80px;
   padding-top: 40px;
   }
+
+
+  .about .box0 img{
+    justify-content: center;
+    align-items: center;
+    padding-left: 110px;
+  
+  
+  }
+  
   .picbox{ 
       display: flex;
       flex-direction: row;
@@ -41,11 +51,10 @@
           
   }
   .picbox .box1 img{
-  padding: 5px;
+    padding: 5px;
    height:290px;
    width:240px;
    border-radius: 10px;
-  
   }
   
   .about{  
@@ -120,6 +129,13 @@
   3px 3px 5px white ;
   border-radius: 10px; 
   }
+
+  .footer {
+    display: flex;
+    position:absolute;
+    margin-top: 25%;
+    color:rgb(28, 245, 172);
+  }
   
     /* Mobile devices */
     @media only screen and (max-width: 767px) {
@@ -135,3 +151,5 @@
     @media only screen and (min-width: 1024px) {
     
     }
+
+    
