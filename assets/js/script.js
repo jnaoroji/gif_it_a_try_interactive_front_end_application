@@ -164,8 +164,9 @@ var displayGif = function (data){
             submitInitials.addEventListener('click', function() {
             var userInitials = initialsEl.value;
             console.log(userInitials);
+            localStorage.setItem("userInitials", userInitials);
+            localStorage.setItem("score", score);
         });
-            
 
             gameArea.appendChild(scoreEl);
             gameArea.appendChild(initialsEl);
@@ -256,6 +257,8 @@ var alert = function (){
         }
     }
 }
+
+
 
 // score modal
 // scoreBtn.addEventListener("click", function(){
