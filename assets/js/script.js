@@ -5,6 +5,10 @@ var beatlesButtonEl = document.querySelector('#beatlesbtn');
 var adeleButtonEl = document.querySelector('#adelebtn');
 var queenButtonEl = document.querySelector('#queenbtn');
 var michaelButtonEl = document.querySelector('#michaelbtn');
+var modal = document.getElementById("my-modal");
+var alertContentEL = document.getElementById("alert-content");
+var scoreBtn = document.getElementById("score")
+var scoreModalEl = document.getElementById("score-modal")
 
 //object of artist urls on music brainz
 const artistApiUrls = {
@@ -27,13 +31,19 @@ var playGame = function (event){
     event.preventDefault();
     
     var artist = event.target.getAttribute('id');
+    // pick artist name stored in local storage
+    var pickedArtist = event.target.textContent
+    localStorage.setItem("artistName", pickedArtist)
+    
     console.log(artist);
 
     if (artist){
         getArtistWorks(artist);
         
     } else{
-        alert('please select a new artist')
+        alertContentEL.textContent = 'please select a new artist'
+        alert();
+        //alert('please select a new artist');
         //cant use alerts, find a modal for this prompt
     }
 }
@@ -42,7 +52,10 @@ var getArtistWorks = function (artist){
 
     var artistApiUrl = artistApiUrls[artist];
     if (!artistApiUrl) {
-        alert('Invalid artist name');
+        alertContentEL.textContent = 'Invalid artist name!'
+        alert();
+        //alert('Invalid artist name!');
+        //cant use alerts, find a modal for this prompt
         return;
     }
     
@@ -56,12 +69,16 @@ var getArtistWorks = function (artist){
             
             });
             } else {
-            alert('Error: ' + response.statusText);
+            alertContentEL.textContent = 'Error: ' + response.statusText
+            alert();
+            //alert('Error: ' + response.statusText)
             //cant use alerts
             }
             })
             .catch(function () {
-            alert('Unable to connect to Music Brainz');
+            alertContentEL.textContent = 'Unable to connect to Music Brainz'
+            alert();
+            //alert('Unable to connect to Music Brainz');
             // cant use alerts
             });
 };
@@ -70,7 +87,10 @@ var displayGame = function (data) {
     var works = data.works;
 
     if (!works || works.length === 0) {
-        alert('No works found for this artist');
+        alertContentEL.textContent = 'No works found for this artist'
+        alert();
+        //alert('No works found for this artist');
+        // cant use alerts
         return;
     }
 
@@ -87,7 +107,20 @@ var displayGame = function (data) {
 
     });
     console.log(titles);
+
     createGiphyRequest();
+
+
+    var RandomButton = document.createElement("button");
+
+    // get picked artist name from local storage and click to start
+    var artistName = localStorage.getItem("artistName")
+    RandomButton.innerHTML = artistName + '<br>' + 'Click to Start!';
+    RandomButton.classList.add('box2','hover:font-bold');
+
+    gameArea.appendChild(RandomButton);
+    RandomButton.addEventListener('click', createGiphyRequest);
+
 }
 
     var createGiphyRequest = function (){
@@ -107,18 +140,25 @@ var displayGame = function (data) {
         
         });
         } else {
-        alert('Error: ' + response.statusText);
+        alertContentEL.textContent = 'Error: ' + response.statusText
+        alert();
+        //alert('Error: ' + response.statusText);
         //cant use alerts
         }
         })
         .catch(function () {
-        alert('Unable to connect to Music Brainz');
+        alertContentEL.textContent = 'Unable to connect to Music Brainz'
+        alert();
+        //alert('Unable to connect to Music Brainz');
         // cant use alerts
         });
 };
 
 var displayGif = function (data){
     var gif = data.data.images.original.mp4;
+
+    // can we get a fix height for each gif?
+    //var gif = data.data.images.fixed_height.mp4;
     console.log(gif);
     // counter increments so the game is only played with 5 loops
         counter++;
@@ -194,3 +234,48 @@ var displayGif = function (data){
 artistButtonsEl.forEach(function(button) {
     button.addEventListener('click', playGame);
   });
+
+
+
+
+  //var tailwind alert modal = document.getElementById("my-modal");
+var alert = function (){
+    var button = document.getElementById("ok-btn");
+
+    modal.style.display = "block";
+
+      // close modal when the OK button
+    button.onclick = function() {
+        modal.style.display = "none";
+    }
+
+// close modal when clicks anywhere outside the modal
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+}
+
+// score modal
+scoreBtn.addEventListener("click", function(){
+    score();
+})
+
+var score = function (){
+    var button = document.getElementById("close-btn");
+
+    scoreModalEl.style.display = "block";
+
+      // close modal when the OK button
+    button.onclick = function() {
+        scoreModalEl.style.display = "none";
+    }
+
+// close modal when clicks anywhere outside the modal
+    window.onclick = function(event) {
+        if (event.target == scoreModalEl) {
+            scoreModalEl.style.display = "none";
+        }
+    }
+}
