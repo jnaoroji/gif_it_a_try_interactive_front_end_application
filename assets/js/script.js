@@ -9,6 +9,7 @@ var modal = document.getElementById("my-modal");
 var alertContentEL = document.getElementById("alert-content");
 var scoreBtn = document.getElementById("score")
 var scoreModalEl = document.getElementById("score-modal")
+var homePageRefresh = document.getElementById('homepagerefresh')
 
 //object of artist urls on music brainz
 const artistApiUrls = {
