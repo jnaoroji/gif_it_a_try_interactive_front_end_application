@@ -17,6 +17,7 @@
   text-align: center;
   font-size: 80px;
   padding-top: 40px;
+  font-weight: bold;
   }
 
 
@@ -52,10 +53,9 @@
   }
   .picbox .box1 img{
     padding: 5px;
-    height:290px;
-    width:248px;
-    border-radius: 10px;
-  
+   height:290px;
+   width:240px;
+   border-radius: 10px;
   }
   
   .about{  
@@ -130,6 +130,18 @@
   3px 3px 5px white ;
   border-radius: 10px; 
   }
+
+  .footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgb(0, 0, 0);
+  color: white;
+  text-align: center;
+  border-radius: 25px;
+    
+  }
   
     /* Mobile devices */
     @media only screen and (max-width: 767px) {
@@ -145,3 +157,5 @@
     @media only screen and (min-width: 1024px) {
     
     }
+
+    
