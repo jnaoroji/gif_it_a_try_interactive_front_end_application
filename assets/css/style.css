@@ -18,6 +18,16 @@
   font-size: 80px;
   padding-top: 40px;
   }
+
+
+  .about .box0 img{
+    justify-content: center;
+    align-items: center;
+    padding-left: 110px;
+  
+  
+  }
+  
   .picbox{ 
       display: flex;
       flex-direction: row;
@@ -41,10 +51,10 @@
           
   }
   .picbox .box1 img{
-  padding: 5px;
-   height:290px;
-   width:240px;
-   border-radius: 10px;
+    padding: 5px;
+    height:290px;
+    width:248px;
+    border-radius: 10px;
   
   }
   
