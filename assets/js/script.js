@@ -7,10 +7,10 @@ var queenButtonEl = document.querySelector('#queenbtn');
 var michaelButtonEl = document.querySelector('#michaelbtn');
 var modal = document.getElementById("my-modal");
 var alertContentEL = document.getElementById("alert-content");
-var scoreBtn = document.getElementById("score")
+var userScoreEl = document.getElementById("userScore")
+var initialEl = document.getElementById("initial")
 
-var userInitials = "";
-var scoreModalEl = document.getElementById("score-modal")
+var InitialSubmitModal = document.getElementById("InitialSubmit-modal")
 var homePageRefresh = document.getElementById('homepagerefresh')
 
 //object of artist urls on music brainz
@@ -151,30 +151,12 @@ var displayGif = function (data){
     counter++;
         
     // check if the game has reached the maximum number of loops
-        if (counter > 5) {
-            // stop the game and display the score
-            // creates score element
-            var scoreEl = document.createElement('p');
-            scoreEl.textContent = 'Your score: ' + score + "/5";
-            // creates initials input
-            var initialsEl = document.createElement('input');
-            initialsEl.setAttribute('type', 'text');
-            initialsEl.setAttribute('placeholder', 'Initials for Highscore!');
-            //creates submit button
-            var submitInitials = document.createElement('button');
-            submitInitials.textContent = "Submit initials";
-            submitInitials.addEventListener('click', function() {
-            var userInitials = initialsEl.value;
-            console.log(userInitials);
-            localStorage.setItem("userInitials", userInitials);
-            localStorage.setItem("score", score);
-        });
-
-            gameArea.appendChild(scoreEl);
-            gameArea.appendChild(initialsEl);
-            gameArea.appendChild(submitInitials);
+        if (counter > 1) {
+            userScoreEl.textContent = 'Your score: ' + score + "/5";
+            InitialInput();
             return;
         }
+    
     
      // Clear the game area
      gifArea.innerHTML = '';
@@ -262,25 +244,22 @@ var alert = function (){
     }
 }
 
+// InitialInput modal
+var InitialInput = function (){
 
+    var button = document.getElementById("initialSubmit-btn");
 
-// score modal
-// scoreBtn.addEventListener("click", function(){
-//     score();
-// })
+    InitialSubmitModal.style.display = "block";
 
-// var score = function (){
-//     var button = document.getElementById("close-btn");
+    button.onclick = function(event) {
+        event.preventDefault();
 
-//     scoreModalEl.style.display = "block";
+        var userName = initialEl.value
+        localStorage.setItem("userScore", userName + " : " + score + "/5")
+        console.log(userName)
 
-//     button.onclick = function() {
-//         scoreModalEl.style.display = "none";
-//     }
+        InitialSubmitModal.style.display = "none";
 
-//     window.onclick = function(event) {
-//         if (event.target == scoreModalEl) {
-//             scoreModalEl.style.display = "none";
-//         }
-//     }
-// }
+    }
+
+}
