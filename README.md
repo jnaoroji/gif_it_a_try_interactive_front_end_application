@@ -120,3 +120,42 @@ This project is graded based on the following criteria:
 
 ---
 © 2023 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved.
+# 07 Project 1: Gif it a Try! Song Guessing Game - Interactive Front-End Application
+
+## Description
+
+User story: As a user, I want to play a game that displays the titles of my favourite artist's works and asks me to identify the song based on a related Giphy video. I want to be scored on how many answers I got right, and be able to view my score after the game.
+Acceptance Criteria:
+The user can select an artist by clicking on their respective button on the webpage.
+The webpage sends an API request to the MusicBrainz database to fetch the artist's works.
+If the API request is successful and there are works to display, the webpage displays the titles of the artist's works.
+The webpage randomly selects a work to generate a Giphy video that is displayed on the webpage.
+The user can input their answer to the corresponding work's title in a text input field.
+The webpage compares the user's answer to the correct answer, and if they match, the webpage displays a "correct" message.
+The webpage tracks the number of correct answers the user submits.
+After the user completes 5 rounds, the webpage displays the user's score in a modal popup, which shows the number of correct answers out of 5.
+The webpage stores user score as persistent data in a highscores page.
+
+
+## Usage
+
+You can use this app by clicking on the deployed application:  https://jnaoroji.github.io/Schedule/
+
+
+
+## Screenshot
+
+The following screenshot shows my web application's appearance and functionality:
+![this is the screenshot of my application, colour coded hours with schedule for the work day](./assets/screenshot.png)
+
+## Credits
+
+* https://developer.mozilla.org
+* https://day.js.org/en/ 
+* This gif was used as the predominant guideline for this Schedule App.
+![A user clicks on slots on the color-coded calendar and edits the events.](./assets/05-third-party-apis-homework-demo.gif)
+
+## License
+
+Please refer to the LICENSE in the repo.
+
