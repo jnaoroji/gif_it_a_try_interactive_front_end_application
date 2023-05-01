@@ -8,7 +8,8 @@ var michaelButtonEl = document.querySelector('#michaelbtn');
 var modal = document.getElementById("my-modal");
 var alertContentEL = document.getElementById("alert-content");
 var scoreBtn = document.getElementById("score")
-var scoreModalEl = document.getElementById("score-modal")
+var scoreModalEl = document.getElementById("score-modal");
+var userInitials = "";
 
 //object of artist urls on music brainz
 const artistApiUrls = {
@@ -143,19 +144,32 @@ var displayGame = function (data) {
 var displayGif = function (data){
     var gif = data.data.images.original.mp4;
 
-    // can we get a fix height for each gif?
-    //var gif = data.data.images.fixed_height.mp4;
     console.log(gif);
     // counter increments so the game is only played with 5 loops
-        counter++;
+    counter++;
         
-        // check if the game has reached the maximum number of loops
+    // check if the game has reached the maximum number of loops
         if (counter > 5) {
             // stop the game and display the score
-            //GE SU YOU NEED TO ADD SCORE HERE
+            // creates score element
             var scoreEl = document.createElement('p');
             scoreEl.textContent = 'Your score: ' + score + "/5";
-            gameArea.appendChild(scoreEl);//maybe in a modal Ge?
+            // creates initials input
+            var initialsEl = document.createElement('input');
+            initialsEl.setAttribute('type', 'text');
+            initialsEl.setAttribute('placeholder', 'Initials for Highscore!');
+            //creates submit button
+            var submitInitials = document.createElement('button');
+            submitInitials.textContent = "Submit initials";
+            submitInitials.addEventListener('click', function() {
+            var userInitials = initialsEl.value;
+            console.log(userInitials);
+        });
+            
+
+            gameArea.appendChild(scoreEl);
+            gameArea.appendChild(initialsEl);
+            gameArea.appendChild(submitInitials);
             return;
         }
     
@@ -172,7 +186,7 @@ var displayGif = function (data){
     // creates answer input
     var answerInput = document.createElement('input');
     answerInput.setAttribute('type', 'text');
-    answerInput.setAttribute('placeholder', 'Enter your answer here');
+    answerInput.setAttribute('placeholder', 'Your answer here');
 
     // creates next button
     var nextEl = document.createElement('button');
@@ -244,22 +258,22 @@ var alert = function (){
 }
 
 // score modal
-scoreBtn.addEventListener("click", function(){
-    score();
-})
+// scoreBtn.addEventListener("click", function(){
+//     score();
+// })
 
-var score = function (){
-    var button = document.getElementById("close-btn");
+// var score = function (){
+//     var button = document.getElementById("close-btn");
 
-    scoreModalEl.style.display = "block";
+//     scoreModalEl.style.display = "block";
 
-    button.onclick = function() {
-        scoreModalEl.style.display = "none";
-    }
+//     button.onclick = function() {
+//         scoreModalEl.style.display = "none";
+//     }
 
-    window.onclick = function(event) {
-        if (event.target == scoreModalEl) {
-            scoreModalEl.style.display = "none";
-        }
-    }
-}
+//     window.onclick = function(event) {
+//         if (event.target == scoreModalEl) {
+//             scoreModalEl.style.display = "none";
+//         }
+//     }
+// }
