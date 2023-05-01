@@ -102,18 +102,6 @@ var displayGame = function (data) {
     console.log(titles);
 
     createGiphyRequest();
-
-
-    var RandomButton = document.createElement("button");
-
-    // get picked artist name from local storage and click to start
-    var artistName = localStorage.getItem("artistName")
-    RandomButton.innerHTML = artistName + '<br>' + 'Click to Start!';
-    RandomButton.classList.add('box2','hover:font-bold');
-
-    gameArea.appendChild(RandomButton);
-    RandomButton.addEventListener('click', createGiphyRequest);
-
 }
 
     var createGiphyRequest = function (){
@@ -151,7 +139,7 @@ var displayGif = function (data){
     counter++;
         
     // check if the game has reached the maximum number of loops
-        if (counter > 1) {
+        if (counter > 5) {
             userScoreEl.textContent = 'Your score: ' + score + "/5";
             InitialInput();
             return;
@@ -162,11 +150,13 @@ var displayGif = function (data){
      gifArea.innerHTML = '';
      gameArea.innerHTML ='';
     // creates gif 
+    var divEl = document.createElement("div")
     var gifEl = document.createElement('video');
     gifEl.src = gif;
     gifEl.autoplay = true;
     gifEl.loop = true;
     gifEl.style.maxHeight = "250px";
+    divEl.classList.add('p-2.5', 'm-5')
 
     // creates answer input
     var answerInput = document.createElement('input');
@@ -174,6 +164,7 @@ var displayGif = function (data){
     answerInput.setAttribute('placeholder', 'Your answer here');
 
     // creates next button
+    var cardEl = document.createElement('div')
     var nextEl = document.createElement('button');
     nextEl.setAttribute('style', 'margin-top: 50%')
     nextEl.textContent = "Next Song!";
@@ -202,11 +193,14 @@ var displayGif = function (data){
     });
     
     
-    
-    gifArea.appendChild(gifEl);
-    gameArea.appendChild(nextEl);
-    gameArea.appendChild(answerInput);
-    gameArea.appendChild(submitEl);
+    cardEl.classList.add('text-center')
+    gifArea.appendChild(divEl);
+    divEl.appendChild(gifEl);
+    gameArea.appendChild(cardEl);
+
+    cardEl.appendChild(nextEl);
+    cardEl.appendChild(answerInput);
+    cardEl.appendChild(submitEl);
 
     //answer element appended after gif has been present for 5 seconds, 
     // answer remains for 3 seconds before new giphy request created

@@ -77,7 +77,8 @@
       width: 250px;
       background:whitesmoke;
       box-shadow: -3px -3px 7px #f6a4c1, 
-      3px 3px 5px rgba(94, 104, 121, .288) ;
+      3px 3px 5px rgba(94, 104, 121, 288) ;
+      
       border-radius: 10px;    
   
   }
