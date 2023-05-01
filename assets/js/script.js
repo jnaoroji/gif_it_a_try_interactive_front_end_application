@@ -14,8 +14,11 @@ const artistApiUrls = {
     "beatlesbtn": "https://musicbrainz.org/ws/2/artist/b10bbbfc-cf9e-42e0-be17-e2c3e1d2600d?inc=works&fmt=json",
   };
 
-var gameArea = document.querySelector('#menu');
+var gifArea = document.querySelector('#menu');
+var gameArea = document.querySelector('.box1');
 var titles = [];
+var searchTerm = "";
+var counter = 0;
 //function that triggers getting the artist works from Music Brains API
 
 var playGame = function (event){
@@ -71,7 +74,7 @@ var displayGame = function (data) {
 
     // Clear the game area
     
-    gameArea.innerHTML = '';
+    gifArea.innerHTML = '';
 
  
 
@@ -86,7 +89,7 @@ var displayGame = function (data) {
 }
 
     var createGiphyRequest = function (){
-    var searchTerm = titles[Math.floor(Math.random() * titles.length)];
+    searchTerm = titles[Math.floor(Math.random() * titles.length)];
     console.log("answer= " + searchTerm);
     var giphyUrl = "https://api.giphy.com/v1/gifs/translate?api_key=Tx6284aZTIMxVEBFzICg2PUFWP8R9FCu&s=" + searchTerm;
     
@@ -98,6 +101,7 @@ var displayGame = function (data) {
         response.json().then(function (gif) {
         console.log(gif);
         displayGif(gif);
+        
         
         });
         } else {
@@ -114,17 +118,73 @@ var displayGame = function (data) {
 var displayGif = function (data){
     var gif = data.data.images.original.mp4;
     console.log(gif);
-
+    // counter increments so the game is only played with 5 loops
+        counter++;
+        
+        // check if the game has reached the maximum number of loops
+        if (counter > 5) {
+            // stop the game and display the score
+            //GE SU YOU NEED TO ADD SCORE HERE
+            var scoreEl = document.createElement('p');
+            scoreEl.textContent = 'Your score: ' + score;
+            gameArea.appendChild(scoreEl);
+            return;
+        }
+    
      // Clear the game area
-     gameArea.innerHTML = '';
-
+     gifArea.innerHTML = '';
+     gameArea.innerHTML ='';
+    // creates gif 
     var gifEl = document.createElement('video');
     gifEl.src = gif;
     gifEl.autoplay = true;
     gifEl.loop = true;
     gifEl.style.maxHeight = "250px";
 
-    gameArea.appendChild(gifEl);    
+    // creates answer input
+    var answerInput = document.createElement('input');
+    answerInput.setAttribute('type', 'text');
+    answerInput.setAttribute('placeholder', 'Enter your answer here');
+
+    // creates next button
+    var nextEl = document.createElement('button');
+    nextEl.textContent = "Next Song!";
+    nextEl.addEventListener('click', createGiphyRequest);
+    
+    // creates submit button
+    var submitEl = document.createElement('button');
+    submitEl.textContent = "Submit";
+    submitEl.addEventListener('click', function() {
+    var userAnswer = answerInput.value;
+    // handle user answer submission
+    if (userAnswer.toLowerCase() === searchTerm.toLowerCase()) {
+        alert('Correct!');
+        score++;
+    } else {
+        alert('Incorrect!');
+    }
+    });
+    
+    
+    
+    gifArea.appendChild(gifEl);
+    gameArea.appendChild(nextEl);
+    gameArea.appendChild(answerInput);
+    gameArea.appendChild(submitEl);
+
+    //answer element appended after gif has been present for 5 seconds, 
+    // answer remains for 3 seconds before new giphy request created
+    setTimeout(function() {
+        var answerEl = document.createElement("p");
+        answerEl.textContent = "Answer: " + searchTerm;
+        
+        gameArea.appendChild(answerEl);
+        // remove the answerEl after 3 seconds
+        setTimeout(function() {
+            gameArea.removeChild(answerEl);
+            createGiphyRequest();
+        }, 3000);
+    }, 5000);
  
 }
 
