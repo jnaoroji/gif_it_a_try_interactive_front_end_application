@@ -183,16 +183,22 @@ var displayGif = function (data){
     var submitEl = document.createElement('button');
     submitEl.textContent = "Submit";
     submitEl.addEventListener('click', function() {
-    var userAnswer = answerInput.value;
+        var userAnswer = answerInput.value;
     // handle user answer submission
-    if (userAnswer.toLowerCase() === searchTerm.toLowerCase()) {
-        alertContentEL.textContent = 'Correct!'
+        if (removeSpecialChars(userAnswer).toLowerCase() === removeSpecialChars(searchTerm).toLowerCase()) {
+        alertContentEL.textContent = 'Correct!';
         alert();
         score++;
-    } else {
-        alertContentEL.textContent = 'Incorrect!'
-        alert();
-    }
+        } else {
+            alertContentEL.textContent = 'Incorrect!';
+            alert();
+        }
+
+            // helper function to remove special characters from a string
+            function removeSpecialChars(str) {
+            return str.replace(/[^\w\s]/gi, '').trim();
+            }
+
     });
     
     
