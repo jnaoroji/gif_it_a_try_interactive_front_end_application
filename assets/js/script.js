@@ -19,6 +19,7 @@ var gameArea = document.querySelector('.box1');
 var titles = [];
 var searchTerm = "";
 var counter = 0;
+var score = 0;
 //function that triggers getting the artist works from Music Brains API
 
 var playGame = function (event){
@@ -126,7 +127,7 @@ var displayGif = function (data){
             // stop the game and display the score
             //GE SU YOU NEED TO ADD SCORE HERE
             var scoreEl = document.createElement('p');
-            scoreEl.textContent = 'Your score: ' + score;
+            scoreEl.textContent = 'Your score: ' + score + "/5";
             gameArea.appendChild(scoreEl);
             return;
         }
