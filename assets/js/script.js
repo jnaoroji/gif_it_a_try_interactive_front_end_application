@@ -43,8 +43,6 @@ var playGame = function (event){
     } else{
         alertContentEL.textContent = 'please select a new artist'
         alert();
-        //alert('please select a new artist');
-        //cant use alerts, find a modal for this prompt
     }
 }
 
@@ -54,8 +52,6 @@ var getArtistWorks = function (artist){
     if (!artistApiUrl) {
         alertContentEL.textContent = 'Invalid artist name!'
         alert();
-        //alert('Invalid artist name!');
-        //cant use alerts, find a modal for this prompt
         return;
     }
     
@@ -71,15 +67,11 @@ var getArtistWorks = function (artist){
             } else {
             alertContentEL.textContent = 'Error: ' + response.statusText
             alert();
-            //alert('Error: ' + response.statusText)
-            //cant use alerts
             }
             })
             .catch(function () {
             alertContentEL.textContent = 'Unable to connect to Music Brainz'
             alert();
-            //alert('Unable to connect to Music Brainz');
-            // cant use alerts
             });
 };
 
@@ -89,8 +81,6 @@ var displayGame = function (data) {
     if (!works || works.length === 0) {
         alertContentEL.textContent = 'No works found for this artist'
         alert();
-        //alert('No works found for this artist');
-        // cant use alerts
         return;
     }
 
@@ -142,15 +132,11 @@ var displayGame = function (data) {
         } else {
         alertContentEL.textContent = 'Error: ' + response.statusText
         alert();
-        //alert('Error: ' + response.statusText);
-        //cant use alerts
         }
         })
         .catch(function () {
         alertContentEL.textContent = 'Unable to connect to Music Brainz'
         alert();
-        //alert('Unable to connect to Music Brainz');
-        // cant use alerts
         });
 };
 
@@ -200,10 +186,12 @@ var displayGif = function (data){
     var userAnswer = answerInput.value;
     // handle user answer submission
     if (userAnswer.toLowerCase() === searchTerm.toLowerCase()) {
-        alert('Correct!');
+        alertContentEL.textContent = 'Correct!'
+        alert();
         score++;
     } else {
-        alert('Incorrect!');
+        alertContentEL.textContent = 'Incorrect!'
+        alert();
     }
     });
     
@@ -244,12 +232,10 @@ var alert = function (){
 
     modal.style.display = "block";
 
-      // close modal when the OK button
     button.onclick = function() {
         modal.style.display = "none";
     }
 
-// close modal when clicks anywhere outside the modal
     window.onclick = function(event) {
         if (event.target == modal) {
             modal.style.display = "none";
@@ -267,12 +253,10 @@ var score = function (){
 
     scoreModalEl.style.display = "block";
 
-      // close modal when the OK button
     button.onclick = function() {
         scoreModalEl.style.display = "none";
     }
 
-// close modal when clicks anywhere outside the modal
     window.onclick = function(event) {
         if (event.target == scoreModalEl) {
             scoreModalEl.style.display = "none";
