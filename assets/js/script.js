@@ -13,6 +13,8 @@ var initialEl = document.getElementById("initial")
 var InitialSubmitModal = document.getElementById("InitialSubmit-modal")
 var homePageRefresh = document.getElementById('homepagerefresh')
 
+
+var userScore = []
 //object of artist urls on music brainz
 const artistApiUrls = {
     "michaelbtn": "https://musicbrainz.org/ws/2/artist/2f9ecbed-27be-40e6-abca-6de49d50299e?inc=works&fmt=json",
@@ -95,11 +97,11 @@ var displayGame = function (data) {
 
     // Displays the titles of the artist's works
     works.forEach(function (work) {
-       
+        //removes special characters, parenthesis strings, and numbers from titiles array
         var title = work.title;
-        title = title.replace(/[^\w\s]/gi, ''); // remove special characters
-        title = title.replace(/\([^)]*\)/g, ''); // remove unusual parenthesis strings
-        title = title.replace(/\d+/g, ''); // remove numbers
+        title = title.replace(/[^\w\s]/gi, ''); 
+        title = title.replace(/\([^)]*\)/g, ''); 
+        title = title.replace(/\d+/g, ''); 
         titles.push(title.trim());
     });
 
@@ -166,6 +168,7 @@ var displayGif = function (data){
     var answerInput = document.createElement('input');
     answerInput.setAttribute('type', 'text');
     answerInput.setAttribute('placeholder', 'Your answer here');
+    // Submits on enter keypress
     answerInput.addEventListener("keypress", function(event) {
         if (event.key === "Enter") {
           submitEl.click();
@@ -184,7 +187,7 @@ var displayGif = function (data){
     submitEl.textContent = "Submit";
     submitEl.addEventListener('click', function() {
         var userAnswer = answerInput.value;
-    // handle user answer submission
+    // handle user answer submission, to lowercase and removes special characters
         if (removeSpecialChars(userAnswer).toLowerCase() === removeSpecialChars(searchTerm).toLowerCase()) {
         alertContentEL.textContent = 'Correct!';
         alert();
@@ -194,10 +197,10 @@ var displayGif = function (data){
             alert();
         }
 
-            // helper function to remove special characters from a string
-            function removeSpecialChars(str) {
-            return str.replace(/[^\w\s]/gi, '').trim();
-            }
+        // helper function to remove special characters from a string
+        function removeSpecialChars(str) {
+        return str.replace(/[^\w\s]/gi, '').trim();
+        }
 
     });
     
@@ -230,8 +233,8 @@ var displayGif = function (data){
 
 
 artistButtonsEl.forEach(function(button) {
-    button.addEventListener('click', playGame);
-  });
+button.addEventListener('click', playGame);
+});
 
 
 
