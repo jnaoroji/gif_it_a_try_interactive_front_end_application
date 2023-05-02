@@ -32,12 +32,11 @@ var counter = 0;
 var score = 0;
 
 window.onload = function() {
-    let previousGame = localStorage.getItem("gameIterationData");
+    let previousGame = JSON.parse(localStorage.getItem("gameIterationData"));
     console.log(previousGame);
     
     if (previousGame) {
-        previousGameObject = JSON.parse(previousGame);
-        gameIteration.push(previousGameObject);
+        gameIteration.push(previousGame);
         console.log(gameIteration);
     }
 }
