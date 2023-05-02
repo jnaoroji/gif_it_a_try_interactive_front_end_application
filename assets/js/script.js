@@ -13,8 +13,9 @@ var initialEl = document.getElementById("initial")
 var InitialSubmitModal = document.getElementById("InitialSubmit-modal")
 var homePageRefresh = document.getElementById('homepagerefresh')
 
-
-var userScore = []
+var previousGame = [];
+var userObject = [];
+var gameIteration =[];
 //object of artist urls on music brainz
 const artistApiUrls = {
     "michaelbtn": "https://musicbrainz.org/ws/2/artist/2f9ecbed-27be-40e6-abca-6de49d50299e?inc=works&fmt=json",
@@ -30,15 +31,22 @@ var searchTerm = "";
 var counter = 0;
 var score = 0;
 
+window.onload = function() {
+    let previousGame = JSON.parse(localStorage.getItem("gameIterationData"));
+    console.log(previousGame);
+    
+    if (previousGame) {
+        gameIteration.push(previousGame);
+        console.log(gameIteration);
+    }
+}
+
 //function that triggers getting the artist works from Music Brains API
 
 var playGame = function (event){
     event.preventDefault();
     
     var artist = event.target.getAttribute('id');
-    // pick artist name stored in local storage
-    var pickedArtist = event.target.textContent
-    localStorage.setItem("artistName", pickedArtist)
     
     console.log(artist);
 
@@ -267,9 +275,13 @@ var InitialInput = function (){
         event.preventDefault();
 
         var userName = initialEl.value
-        localStorage.setItem("userScore", userName + " : " + score + "/5")
-        console.log(userName)
-
+        userObject = {
+            userName: userName,
+            userScore: score +"/5",
+        }
+        gameIteration.push(userObject);
+        localStorage.setItem("gameIterationData", JSON.stringify(gameIteration));
+        window.location.href = "score.html";
         InitialSubmitModal.style.display = "none";
 
     }
