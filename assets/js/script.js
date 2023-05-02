@@ -269,7 +269,7 @@ var InitialInput = function (){
         var userName = initialEl.value
         localStorage.setItem("userScore", userName + " : " + score + "/5")
         console.log(userName)
-
+        window.location.href = "score.html";
         InitialSubmitModal.style.display = "none";
 
     }
