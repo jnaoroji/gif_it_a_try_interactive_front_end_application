@@ -1,7 +1,9 @@
-var gameIterationData;
+var gameIterationData = [];
+var highEl = document.getElementById('high');
+
 
 // Get the value of the "gameIterationData" key from local storage
-gameIterationData = localStorage.getItem("gameIterationData");
+gameIterationData = localStorage.getItem("gameIterationData")||[];
 
 // Parse the string representation of the array back into an array
 var highScores = JSON.parse(gameIterationData);
@@ -9,30 +11,26 @@ console.log(highScores);
 
 // Check if the "gameIteration" array has any values
 if (highScores && highScores.length > 0) {
-  // Create an unordered list element
-  var list = document.createElement("ul");
-
-  // Loop through the "gameIteration" array and create list items for each value
+  // loop for each li in highscores array
   for (var i = 0; i < highScores.length; i++) {
-    // Create a list item for the current iteration
-    var listItem = document.createElement("li");
 
-    // Create a span element to display the username
+    var Highli = document.createElement("li");
+
+    // displays username from highscores array
     var usernameSpan = document.createElement("span");
-    usernameSpan.textContent = highScores[i].username + ": ";
+    usernameSpan.textContent = highScores[i].userName + ": ";
 
-    // Create a span element to display the score
+    // displays score from highscore array
     var scoreSpan = document.createElement("span");
-    scoreSpan.textContent = highScores[i].score;
+    scoreSpan.textContent = highScores[i].userScore;
 
-    // Append the username and score spans to the list item
-    listItem.appendChild(usernameSpan);
-    listItem.appendChild(scoreSpan);
+    // appends username and score to li
+    Highli.appendChild(usernameSpan);
+    Highli.appendChild(scoreSpan);
 
-    // Append the list item to the unordered list
-    list.appendChild(listItem);
+    // Append the list item to the ordered list
+    highEl.appendChild(Highli);
   }
 
-  // Append the unordered list to the body of the HTML document
-  document.body.appendChild(list);
+  
 }

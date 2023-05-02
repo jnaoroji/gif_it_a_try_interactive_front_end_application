@@ -13,7 +13,7 @@ var initialEl = document.getElementById("initial")
 var InitialSubmitModal = document.getElementById("InitialSubmit-modal")
 var homePageRefresh = document.getElementById('homepagerefresh')
 
-
+var previousGame = [];
 var userObject = [];
 var gameIteration =[];
 //object of artist urls on music brainz
@@ -31,15 +31,23 @@ var searchTerm = "";
 var counter = 0;
 var score = 0;
 
+window.onload = function() {
+    let previousGame = localStorage.getItem("gameIterationData");
+    console.log(previousGame);
+    
+    if (previousGame) {
+        previousGameObject = JSON.parse(previousGame);
+        gameIteration.push(previousGameObject);
+        console.log(gameIteration);
+    }
+}
+
 //function that triggers getting the artist works from Music Brains API
 
 var playGame = function (event){
     event.preventDefault();
     
     var artist = event.target.getAttribute('id');
-    // pick artist name stored in local storage
-    var pickedArtist = event.target.textContent
-    localStorage.setItem("artistName", pickedArtist)
     
     console.log(artist);
 
