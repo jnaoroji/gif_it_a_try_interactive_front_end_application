@@ -36,7 +36,7 @@ window.onload = function() {
     console.log(previousGame);
     
     if (previousGame) {
-        gameIteration.push(previousGame);
+        gameIteration = gameIteration.concat(previousGame);
         console.log(gameIteration);
     }
 }
