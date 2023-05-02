@@ -15,6 +15,7 @@ if (highScores && highScores.length > 0) {
   for (var i = 0; i < highScores.length; i++) {
 
     var Highli = document.createElement("li");
+    Highli.setAttribute('style', 'margin-left: 37px; margin-top:10px; font-weight: bold; font-size:17px')
 
     // displays username from highscores array
     var usernameSpan = document.createElement("span");
@@ -27,6 +28,7 @@ if (highScores && highScores.length > 0) {
     // appends username and score to li
     Highli.appendChild(usernameSpan);
     Highli.appendChild(scoreSpan);
+
 
     // Append the list item to the ordered list
     highEl.appendChild(Highli);
