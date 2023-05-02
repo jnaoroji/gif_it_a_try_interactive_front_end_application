@@ -14,7 +14,8 @@ var InitialSubmitModal = document.getElementById("InitialSubmit-modal")
 var homePageRefresh = document.getElementById('homepagerefresh')
 
 
-var userScore = []
+var userObject = [];
+var gameIteration =[];
 //object of artist urls on music brainz
 const artistApiUrls = {
     "michaelbtn": "https://musicbrainz.org/ws/2/artist/2f9ecbed-27be-40e6-abca-6de49d50299e?inc=works&fmt=json",
@@ -267,8 +268,12 @@ var InitialInput = function (){
         event.preventDefault();
 
         var userName = initialEl.value
-        localStorage.setItem("userScore", userName + " : " + score + "/5")
-        console.log(userName)
+        userObject = {
+            userName: userName,
+            userScore: score +"/5",
+        }
+        gameIteration.push(userObject);
+        localStorage.setItem("gameIterationData", JSON.stringify(gameIteration));
         window.location.href = "score.html";
         InitialSubmitModal.style.display = "none";
 
