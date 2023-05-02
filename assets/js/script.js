@@ -166,6 +166,11 @@ var displayGif = function (data){
     var answerInput = document.createElement('input');
     answerInput.setAttribute('type', 'text');
     answerInput.setAttribute('placeholder', 'Your answer here');
+    answerInput.addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+          submitEl.click();
+        }
+      });
 
     // creates next button
     var cardEl = document.createElement('div')
