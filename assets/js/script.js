@@ -95,10 +95,14 @@ var displayGame = function (data) {
 
     // Displays the titles of the artist's works
     works.forEach(function (work) {
+       
         var title = work.title;
-        titles.push(title);
-
+        title = title.replace(/[^\w\s]/gi, ''); // remove special characters
+        title = title.replace(/\([^)]*\)/g, ''); // remove unusual parenthesis strings
+        title = title.replace(/\d+/g, ''); // remove numbers
+        titles.push(title.trim());
     });
+
     console.log(titles);
 
     createGiphyRequest();
