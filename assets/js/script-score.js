@@ -3,13 +3,12 @@ var highEl = document.getElementById('high');
 
 
 // Get the value of the "gameIterationData" key from local storage
-gameIterationData = localStorage.getItem("gameIterationData")||[];
+gameIterationData = localStorage.getItem("gameIterationData");
 
-// Parse the string representation of the array back into an array
+// Parse the string into the highscores array
 var highScores = JSON.parse(gameIterationData);
 console.log(highScores);
 
-// Check if the "gameIteration" array has any values
 if (highScores && highScores.length > 0) {
   // loop for each li in highscores array
   for (var i = 0; i < highScores.length; i++) {
