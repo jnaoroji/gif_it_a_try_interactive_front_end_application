@@ -176,6 +176,7 @@ var displayGif = function (data){
     var answerInput = document.createElement('input');
     answerInput.setAttribute('type', 'text');
     answerInput.setAttribute('placeholder', 'Your answer here');
+   
     // Submits on enter keypress
     answerInput.addEventListener("keypress", function(event) {
         if (event.key === "Enter") {
@@ -187,6 +188,7 @@ var displayGif = function (data){
     var cardEl = document.createElement('div')
     var nextEl = document.createElement('button');
     nextEl.setAttribute('style', 'margin-top: 50%')
+    nextEl.setAttribute('class', 'box2')
     nextEl.textContent = "Next Song!";
     nextEl.addEventListener('click', createGiphyRequest);
     
