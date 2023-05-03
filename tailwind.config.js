@@ -9,6 +9,10 @@ module.exports = {
       },
       colors: {
         'whitesmoke': '#F5F5F5'
+      },
+      fontFamily: {
+        'mono': ['"Courier New"', 'Courier', 'monospace']
+
       }
   },
   plugins: [],

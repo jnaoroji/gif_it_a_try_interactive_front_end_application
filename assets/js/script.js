@@ -174,7 +174,6 @@ var displayGif = function (data){
 
     // creates answer input
     var answerInput = document.createElement('input');
-    answerInput.setAttribute('type', 'text');
     answerInput.setAttribute('placeholder', 'Your answer here');
     // Submits on enter keypress
     answerInput.addEventListener("keypress", function(event) {
@@ -186,7 +185,6 @@ var displayGif = function (data){
     // creates next button
     var cardEl = document.createElement('div')
     var nextEl = document.createElement('button');
-    nextEl.setAttribute('style', 'margin-top: 50%')
     nextEl.textContent = "Next Song!";
     nextEl.addEventListener('click', createGiphyRequest);
     
@@ -212,8 +210,11 @@ var displayGif = function (data){
 
     });
     
+    answerInput.classList.add('block', 'w-60', 'rounded-md', 'border-1', 'p-4', 'mx-auto', 'text-gray-900', 'ring-1', 'ring-inset', 'ring-gray-300', 'text-center','placeholder:text-gray-400', 'focus:ring-2', 'focus:ring-inset', 'focus:ring-indigo-600');
+    nextEl.classList.add('px-4', 'py-1', 'bg-violet-500', 'text-white', 'text-base', 'font-medium', 'rounded-md', 'w-2', 'shadow-sm', 'hover:bg-pink-600', 'focus:outline-none', 'focus:ring-2', 'focus:ring-purple-300');
+    submitEl.classList.add('px-4', 'py-1', 'bg-violet-500', 'text-white', 'text-base', 'font-medium', 'rounded-md', 'w-1/2', 'shadow-sm', 'hover:bg-pink-600', 'focus:outline-none', 'focus:ring-2', 'focus:ring-purple-300');
+    cardEl.classList.add('text-center', 'leading-10','py-5');
     
-    cardEl.classList.add('text-center')
     gifArea.appendChild(divEl);
     divEl.appendChild(gifEl);
     gameArea.appendChild(cardEl);
@@ -227,7 +228,7 @@ var displayGif = function (data){
     setTimeout(function() {
         var answerEl = document.createElement("p");
         answerEl.textContent = "Answer: " + searchTerm;
-        answerEl.setAttribute('style', 'padding: 10px')
+        answerEl.classList.add('text-center')
         
         gameArea.appendChild(answerEl);
         // remove the answerEl after 3 seconds
@@ -273,7 +274,6 @@ var InitialInput = function (){
 
     button.onclick = function(event) {
         event.preventDefault();
-
         var userName = initialEl.value
         userObject = {
             userName: userName,
