@@ -234,8 +234,8 @@ var displayGif = function (data){
         setTimeout(function() {
             gameArea.removeChild(answerEl);
             createGiphyRequest();
-        }, 3000);
-    }, 5000);
+        }, 10000);
+    }, 10000);
  
 }
 
