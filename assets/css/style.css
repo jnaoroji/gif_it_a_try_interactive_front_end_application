@@ -126,7 +126,6 @@
   color: rgb(0, 0, 0);
   border: none;
   border-radius: 7px;
-  
   box-shadow: -3px -3px 7px rgba(94, 104, 121, .288), 
   3px 3px 5px white ;
   border-radius: 10px; 
@@ -143,7 +142,56 @@
   border-radius: 25px;
     
   }
+
+  .ButtonsStyling {
+    display: inline-block;
+    padding: .75rem 1.25rem;
+    border-radius: 10rem;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 1rem;
+    letter-spacing: .15rem;
+    transition: all .3s;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+.ButtonsStyling:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgb(79, 79, 233);
+      border-radius: 10rem;
+      z-index: -2;
+    }
+
+    .ButtonsStyling:before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0%;
+      height: 100%;
+      background-color: darken($color, 15%);
+      transition: all .3s;
+      border-radius: 10rem;
+      z-index: -1;
+    }
+    .ButtonsStyling:hover {
+      color: #fff;
+
+    }
+    .ButtonsStyling:before {
+        width: 100%;
+     }
+    
   
+  
+
+
     /* Mobile devices */
     @media only screen and (max-width: 767px) {
     

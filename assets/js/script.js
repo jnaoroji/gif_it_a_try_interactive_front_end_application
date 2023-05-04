@@ -175,6 +175,7 @@ var displayGif = function (data){
     // creates answer input
     var answerInput = document.createElement('input');
     answerInput.setAttribute('placeholder', 'Your answer here');
+   
     // Submits on enter keypress
     answerInput.addEventListener("keypress", function(event) {
         if (event.key === "Enter") {
@@ -235,8 +236,8 @@ var displayGif = function (data){
         setTimeout(function() {
             gameArea.removeChild(answerEl);
             createGiphyRequest();
-        }, 3000);
-    }, 5000);
+        }, 10000);
+    }, 10000);
  
 }
 
