@@ -10,6 +10,7 @@ var highScores = JSON.parse(gameIterationData);
 console.log(highScores);
 
 if (highScores && highScores.length > 0) {
+
   // loop for each li in highscores array
   for (var i = 0; i < highScores.length; i++) {
 

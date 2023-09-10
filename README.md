@@ -28,7 +28,7 @@ THEN the user’s score will be stored in the Highscores page so they can see ho
 
 ## Usage
 You can use this app by clicking on the artist buttons and starting a new game!
-Here is a link to the deployed application:  https://jnaoroji.github.io/group-project1-team-3-Interactive-Front-End-Application/
+Here is a link to the deployed application:  https://jnaoroji.github.io/gif_it_a_try_interactive_front_end_application/
 
 ## Screenshot
 
